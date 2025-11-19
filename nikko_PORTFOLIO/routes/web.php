@@ -8,11 +8,10 @@ Route::get('/', function () {
 });
 
 Route::get('/register',[AuthController::class, 'showRegister'])->name('register.form');
-Route::post('/register',[AuthController::class, 'performRegister'])->name('register');
-
+Route::post('/register',[AuthController::class, 'Register'])->name('register');
 
 Route::get('/login',[AuthController::class, 'showLogin'])->name('login.form');
-Route::post('/login',[AuthController::class, 'performLogin'])->name('login');
+Route::post('/login',[AuthController::class, 'Login'])->name('login');
 
 Route::get('/logout', function () {
 });

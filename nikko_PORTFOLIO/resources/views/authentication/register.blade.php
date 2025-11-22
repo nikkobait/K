@@ -1,15 +1,20 @@
-@include('components.header')
 
-<form action="{{ route ('register')}}" method="POST">
-        <label>Name</label>
-        <input type="text" name="full_name" placeholder="Full name">
-        <label>Email</label>
-        <input type="email" name="email" placeholder="Email">
-        <label>Password</label>
-        <input type="password" name="password" placeholder="Password">
-        <label>Retype password</label>
-        <input type="password" name="password_confirmation" placeholder="Retype password">
+    @if($errors->any())
+        <div style="color:red">
+            @foreach ($errors->all() as $error )
+                <p>[{{$error}}]</p>   
+            @endforeach
+        </div>
+    @endif
+    <form  action="{{route('register')}}" method="POST">
+        @csrf
+        <p>Name</p>
+        <input  type="text" name ="name" required>
+        <p>Email</p>
+        <input type="email" name="email" required>
+        <p>password</p>
+        <input type="password" name="password"required>
+        <p>password_confirmation</p>
+        <input type="password" name="password_confirmation"required>
         <input type="submit">
-</form>
-
-@include('components.footer')
+    </form>

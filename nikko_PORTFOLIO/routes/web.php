@@ -1,17 +1,25 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controller\AuthController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+#return view('home');
+    #return view('resources/views/authentication/bl');
+#});
+#Route::get('/admin/login', function () {
+  #  return view('authentication.login');
+#});
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('authentication.login');
 });
 
-Route::get('/register',[AuthController::class, 'showRegister'])->name('register.form');
-Route::post('/register',[AuthController::class, 'Register'])->name('register');
+route::get('register',[AuthController::class,'showRegister'])->name('register.form');
+route::post('register',[AuthController::class,'register'])->name("register");
 
-Route::get('/login',[AuthController::class, 'showLogin'])->name('login.form');
-Route::post('/login',[AuthController::class, 'Login'])->name('login');
+route::get('login',[AuthController::class,'showLogin'])->name('login.form');
+route::post('login',[AuthController::class,'login'])->name('login.form');
 
-Route::get('/logout', function () {
-});
+Route::get('dashboard',function(){
+  return view('dashboard');
+})->middleware('auth')->name('dashboard');
